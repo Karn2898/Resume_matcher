@@ -1,0 +1,21 @@
+Asha Verma
+Backend Developer | Pune, India
+
+SUMMARY
+Backend developer with 3 years of experience building Python web services.
+
+EXPERIENCE
+Backend Developer, Northwind Logistics (2022 - Present)
+- Designed and maintained REST APIs in Python (FastAPI) serving about 1.5M requests per day.
+- Wrote PostgreSQL queries and schema migrations; reduced slow report queries from 12s to 2s via indexing.
+- Built a background job pipeline with Celery and Redis for shipment-status notifications.
+- Wrote pytest suites (85% coverage) and set up GitHub Actions CI for the service.
+
+Junior Developer, BlueLeaf Software (2021 - 2022)
+- Implemented CRUD endpoints in Flask and fixed production bugs.
+
+EDUCATION
+B.Tech, Computer Science, 2021
+
+SKILLS
+Python, FastAPI, Flask, PostgreSQL, Redis, Celery, Git, Linux, pytest, Kubernetes (coursework only)

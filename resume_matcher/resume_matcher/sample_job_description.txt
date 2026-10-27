@@ -1,0 +1,16 @@
+Senior Backend Engineer - Payments Platform
+
+We are hiring a backend engineer to build and operate our payment APIs.
+
+Essential requirements
+- 3+ years of professional Python experience
+- Design and build production REST APIs
+- Strong SQL / PostgreSQL skills
+- Automated testing and CI/CD
+- Docker for packaging and deployment
+
+Preferred
+- AWS (ECS, RDS, or Lambda)
+- Experience with message queues
+- Kubernetes
+- Payment or fintech domain experience
