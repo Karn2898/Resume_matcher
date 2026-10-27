@@ -1,31 +1,28 @@
-# Built things
-_Debug/
-Compiled/
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
 
-# AudioCache can be rebuilt from sources
-AudioCache/
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
 
-# Lockfile
-_OpenInEditor.lock
-
-# User settings
-Game.agf.user
-*.crm.user
-
-# Backups
-Game.agf.bak
-backup_acsprset.spr
-
-# Memory dumps
-*.dmp
-
-# Temporary files
-# temporarily created during sprite or room background compression
-~aclzw.tmp
-# temporary, main game data, before getting packed into exe
-game28.dta
-# temporary build of the game before being moved to Compiled/ folder
-*.exe
-
-# Log files
-warnings.log
+# Generated / local
+output*.json
+*.log
+.ipynb_checkpoints/
+.DS_Store
+.idea/
+.vscode/
+.kilo/
+*.zip
