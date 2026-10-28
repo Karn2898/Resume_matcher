@@ -1,16 +1,4 @@
-#!/usr/bin/env python3
-"""Gemini-powered resume vs. job description matcher.
 
-CLI:
-    python resume_matcher.py --resume sample_resume.txt --jd sample_job_description.txt
-
-Library:
-    from resume_matcher import evaluate
-    result = evaluate(resume_text, job_description)   # -> models.MatchResult
-
-Success: validated JSON on stdout, exit code 0.
-Failure: nothing on stdout, JSON error on stderr, non-zero exit code (see errors.py).
-"""
 
 from __future__ import annotations
 
@@ -50,39 +38,38 @@ from prompts import (
     load_system_prompt,
 )
 
-try:  # optional convenience; .env is git-ignored
+try:  
     from dotenv import load_dotenv
-except ImportError:  # pragma: no cover
+except ImportError: 
     load_dotenv = None
 
 log = logging.getLogger("resume_matcher")
 
-# gemini-2.5-flash is gone for new keys; still double-check with --list-models
-DEFAULT_MODEL = "gemini-3.8-flash"
+
+DEFAULT_MODEL = "gemini-3.5-flash"
 BACKOFF_BASE_S = 1.0
 BACKOFF_CAP_S = 30.0
 
-# Indirection so tests can run instantly and deterministically.
+
 _sleep = time.sleep
 _uniform = random.uniform
 _monotonic = time.monotonic
 
 
-# --------------------------------------------------------------------------- config
 @dataclass(frozen=True)
 class Config:
     """Runtime settings. The API key is excluded from repr to avoid log leaks."""
 
     api_key: str = field(repr=False)
     model: str = DEFAULT_MODEL
-    request_timeout_s: float = 30.0
+    request_timeout_s: float = 120.0
     max_retries: int = 4
-    deadline_s: float = 120.0
+    deadline_s: float = 300.0
     max_input_chars: int = 20_000
 
     @classmethod
     def from_env(cls, environ: Mapping[str, str] | None = None) -> "Config":
-        """Build config from environment variables (see .env.example)."""
+    
         env = os.environ if environ is None else environ
         api_key = (env.get("GEMINI_API_KEY") or "").strip()
         if not api_key:
@@ -114,9 +101,9 @@ class Config:
         )
 
 
-# --------------------------------------------------------------------------- inputs
+# inputs
 def validate_inputs(resume_text: Any, job_description: Any, max_chars: int) -> tuple[str, str]:
-    """Check types, emptiness and size. Never truncates silently."""
+    
     for label, value in (("resume", resume_text), ("job description", job_description)):
         if not isinstance(value, str):
             raise InputError(f"The {label} must be a string, got {type(value).__name__}.")
@@ -130,9 +117,9 @@ def validate_inputs(resume_text: Any, job_description: Any, max_chars: int) -> t
     return resume_text.strip(), job_description.strip()
 
 
-# --------------------------------------------------------------------- error mapping
+#  error mapping
 def _retry_after_seconds(exc: BaseException) -> float | None:
-    """Best-effort server retry guidance: Retry-After header or RetryInfo detail."""
+
     try:
         headers = getattr(getattr(exc, "response", None), "headers", None)
         if headers is not None:
@@ -153,7 +140,7 @@ def _retry_after_seconds(exc: BaseException) -> float | None:
 
 
 def classify_exception(exc: BaseException) -> ResumeMatcherError:
-    """Map SDK / transport exceptions to the typed hierarchy (no secrets in messages)."""
+    
     if isinstance(exc, ResumeMatcherError):
         return exc
     if isinstance(exc, genai_errors.APIError):
@@ -186,15 +173,9 @@ def classify_exception(exc: BaseException) -> ResumeMatcherError:
     return ResumeMatcherError(f"Unexpected error: {type(exc).__name__}")
 
 
-# --------------------------------------------------------------------------- model IO
+#  model IO
 def build_client(config: Config) -> genai.Client:
-    """Create the SDK client. The key is passed explicitly and never logged.
-
-    Express-style keys ("AQ.") only work against the Gemini API backend, but the
-    SDK auto-detects their prefix and sends requests to Vertex AI instead, which
-    fails with a confusing auth error. Pin the backend unless the caller asked
-    for Vertex explicitly via GOOGLE_GENAI_USE_VERTEXAI.
-    """
+    
     use_vertex = os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in ("1", "true", "yes")
     return genai.Client(api_key=config.api_key, vertexai=use_vertex)
 
@@ -248,7 +229,7 @@ def call_with_retries(
             attempt += 1
 
 
-# ----------------------------------------------------------------------- parse / validate
+# parse 
 def _strip_single_fence(text: str) -> str:
     """Safe recovery: remove ONE wrapping Markdown fence, nothing else."""
     lines = text.strip().splitlines()
@@ -273,7 +254,7 @@ def parse_and_validate(raw: str) -> MatchResult:
         raise ModelOutputError(f"Model output failed schema validation: {problems}") from exc
 
 
-# --------------------------------------------------------------------------- pipeline
+#  pipeline
 def evaluate(
     resume_text: str,
     job_description: str,
@@ -309,7 +290,7 @@ def evaluate(
         ) from second
 
 
-# ------------------------------------------------------------------------------- CLI
+
 def _read_text(path: str, label: str) -> str:
     try:
         with open(path, encoding="utf-8") as handle:
