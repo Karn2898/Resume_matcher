@@ -1,16 +1,13 @@
-Senior Backend Engineer - Payments Platform
 
-We are hiring a backend engineer to build and operate our payment APIs.
-
-Essential requirements
-- 3+ years of professional Python experience
-- Design and build production REST APIs
-- Strong SQL / PostgreSQL skills
-- Automated testing and CI/CD
-- Docker for packaging and deployment
-
-Preferred
-- AWS (ECS, RDS, or Lambda)
-- Experience with message queues
-- Kubernetes
-- Payment or fintech domain experience
+AI Workflow Building: Work with the engineering team to build, evaluate, and test automated AI routing workflows and pipelines.
+•
+LLM Integration: Work with leading AI model APIs including OpenAI, Google Gemini, Anthropic, and specialized open-source models.
+•
+Prompt Engineering: Write and test structured prompts, system instructions, and output schemas to get accurate, reliable responses.
+•
+RAG & Search: Help build and test question-answering pipelines using vector databases and Retrieval-Augmented Generation.
+•
+•
+Accuracy & Speed Testing: Benchmark AI model outputs for hallucination rates, response latency, token efficiency, and overall helpfulness.
+Application Integration: Integrate AI features into Campus OS (aivicampus.com, explore demo sandbox: campus.aivilabs.com) mock interview tools,
+Indic speech evaluation, and web applications.

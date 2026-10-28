@@ -1,21 +1,77 @@
-Asha Verma
-Backend Developer | Pune, India
+# Tamaghna Sarkar
 
-SUMMARY
-Backend developer with 3 years of experience building Python web services.
+Jalpaiguri, West Bengal | +91-8116737245 | tamaghna51@gmail.com | LinkedIn | GitHub
 
-EXPERIENCE
-Backend Developer, Northwind Logistics (2022 - Present)
-- Designed and maintained REST APIs in Python (FastAPI) serving about 1.5M requests per day.
-- Wrote PostgreSQL queries and schema migrations; reduced slow report queries from 12s to 2s via indexing.
-- Built a background job pipeline with Celery and Redis for shipment-status notifications.
-- Wrote pytest suites (85% coverage) and set up GitHub Actions CI for the service.
+## SUMMARY
 
-Junior Developer, BlueLeaf Software (2021 - 2022)
-- Implemented CRUD endpoints in Flask and fixed production bugs.
+AI developer and undergraduate ECE student with hands-on experience across NLP, RAG, and MLOps. Builds full-stack AI agents, multimodal LLM apps, and production deployment pipelines using LangGraph, FastAPI, AWS, and Docker. Active open-source contributor preparing for GATE while targeting internships in deep learning and model deployment.
 
-EDUCATION
-B.Tech, Computer Science, 2021
+## EDUCATION
 
-SKILLS
-Python, FastAPI, Flask, PostgreSQL, Redis, Celery, Git, Linux, pytest, Kubernetes (coursework only)
+**Alipurduar Government Engineering and Management College** | 2023 – 2027
+
+B.Tech in Electronics and Communication Engineering; GPA: 6.52/10 (through 6th semester)
+
+## EXPERIENCE
+
+**Unified Mentor Private Limited** | Jul 2025 – Aug 2025
+
+*Machine Learning Intern*
+
+- Built probabilistic decision-making models for AI systems, improving prediction accuracy by 20%.
+- Authored project reports that streamlined stakeholder communication, cutting decision time by 25%.
+- Deployed ML models into production, reducing manual analysis time by 30% and boosting productivity.
+- Optimized AI/ML pipelines on AWS with senior engineers for faster, more reliable model rollout.
+
+## PROJECTS
+
+### Vertico – AI Coding Agent | GitHub
+
+**Technologies:** LangGraph, FastAPI, SQLModel, PostgreSQL, pgvector, Celery, Redis, Docker, React, TypeScript
+
+- Built a full-stack AI coding agent with LangGraph orchestration and Gemini LLM for refactor and tool-calling workflows.
+- Designed a FastAPI backend with SQLModel, PostgreSQL, and pgvector powering session, chat, diff, and RAG routes.
+- Shipped VS Code and JetBrains IDE extensions (React, Tailwind, shadcn/ui) with CI/CD via GitHub Actions on a self-hosted Oracle Cloud runner.
+
+### AuroraQ – Multimodal LLM App | GitHub | Live Demo
+
+**Technologies:** FastAPI, Google Gemini, SlowAPI, SQLite, Streamlit
+
+- Built a production-ready multimodal LLM app supporting text, image, and audio inputs across multi-turn conversations.
+- Implemented bearer-token authentication, configurable rate limiting, and file-size validation for secure API usage.
+
+### RAG-Enhanced Language Model | GitHub
+
+- Built a retrieval-augmented generation system combining vector databases with fine-tuned LLMs.
+- Owned the full pipeline end-to-end, from data collection and preprocessing through model training and fine-tuning.
+- Optimized inference for low-latency, edge-deployable use on Google Colab.
+
+### Medical Chatbot | GitHub
+
+- Built a RAG-based medical chatbot, improving response relevance by 40–60% over baseline QA.
+- Deployed an embedding-retrieval-generation pipeline via Docker on Render/AWS with under 1.5s latency.
+
+### Open Source Contribution – extra-org/extra | GitHub
+
+- Merged pull request adding a self-contained OpenAI-default test-fixture system; part of 40+ public repositories maintained on GitHub.
+- Merged pull request exposing Extra as an MCP server over stdio, exposing the full LangGraph agent as a single callable tool for MCP clients.
+
+## CERTIFICATIONS
+
+- Oracle Cloud Infrastructure 2025 Generative AI Professional Certification — Oracle University (Aug 2025)
+- Machine Learning I — Columbia University (Aug 2025)
+- Machine Learning with Python — freeCodeCamp (Jun 2025)
+
+## SKILLS
+
+**Languages:** Python, C, C++
+
+**Frameworks/Libraries:** FastAPI, LangGraph, Hugging Face Transformers, LangChain, PyTorch, Streamlit, React
+
+**ML:** RAG, Sequence-to-Sequence Models, Multi-Language NLP, Dialogue Systems
+
+**MLOps/Deployment:** AWS, Oracle Cloud, Vercel, Docker, Celery/Redis, Git/GitHub, CI/CD Pipelines, MLflow
+
+**Databases:** PostgreSQL, MySQL, SQLite
+
+**Tools:** PyCharm, VS Code, Google Colab, Jupyter, Postman
