@@ -62,7 +62,7 @@ class Config:
 
     api_key: str = field(repr=False)
     model: str = DEFAULT_MODEL
-    request_timeout_s: float = 120.0
+    request_timeout_s: float = 90.0
     max_retries: int = 4
     deadline_s: float = 300.0
     max_input_chars: int = 20_000
@@ -94,9 +94,9 @@ class Config:
         return cls(
             api_key=api_key,
             model=(env.get("GEMINI_MODEL") or DEFAULT_MODEL).strip(),
-            request_timeout_s=number("GEMINI_REQUEST_TIMEOUT_S", 30.0, float),
+            request_timeout_s=number("GEMINI_REQUEST_TIMEOUT_S", 90.0, float),
             max_retries=number("GEMINI_MAX_RETRIES", 4, int),
-            deadline_s=number("GEMINI_DEADLINE_S", 120.0, float),
+            deadline_s=number("GEMINI_DEADLINE_S", 300.0, float),
             max_input_chars=number("MAX_INPUT_CHARS", 20_000, int),
         )
 

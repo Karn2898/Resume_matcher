@@ -3,10 +3,9 @@
 Evaluates a resume against a job description with the Gemini API and returns **strictly
 validated JSON**. Built for the AIVI Intelligence AI Engineer challenge (Deliverable 3).
 
-> **Status honesty:** the mocked unit tests have been executed (see `test_report.md`),
-> and the pipeline was smoke-tested live against `gemini-3.8-flash` with a real key
-> (a valid key + exhausted free-tier quota was the last state captured). Full live
-> verification, including prompt-injection resistance, is still worth running on your own key.
+> **Status honesty:** the mocked unit tests have been executed (see `test_report.md`).
+> A live end-to-end run was attempted and ended in a Gemini HTTP 504 after retries, so
+> live output and prompt-injection resistance are **not yet verified**. See `test_report.md`.
 
 ## Architecture
 
@@ -69,10 +68,10 @@ Get a key from Google AI Studio. Keep it in the environment or a git-ignored `.e
 |---|---|---|
 | `GEMINI_API_KEY` | required | API key (never logged or printed) |
 | `GOOGLE_GENAI_USE_VERTEXAI` | `False` | Set `true` only to use the Vertex AI backend. Keys with an `AQ.` prefix (Vertex Express) must keep this `False` — the SDK would otherwise route them to Vertex AI, where they fail auth (HTTP 400). |
-| `GEMINI_MODEL` | `gemini-3.8-flash` | Model id (`gemini-2.5-flash` is retired for new users) |
+| `GEMINI_MODEL` | `gemini-3.5-flash` | Model id (`gemini-2.5-flash` is retired for new users) |
 | `GEMINI_REQUEST_TIMEOUT_S` | 90 | Per-request timeout (thinking models can be slow) |
 | `GEMINI_MAX_RETRIES` | 4 | Max retries for transient errors |
-| `GEMINI_DEADLINE_S` | 120 | Overall deadline across retries and correction |
+| `GEMINI_DEADLINE_S` | 300 | Overall deadline across retries and correction |
 | `MAX_INPUT_CHARS` | 20000 | Max chars per input; larger inputs are rejected, not truncated |
 
 **Verifying the model.** Gemini model availability changes, and the official deprecation

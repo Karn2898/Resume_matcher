@@ -59,7 +59,7 @@ def fake_client(*outcomes) -> SimpleNamespace:
 
 @pytest.fixture()
 def cfg() -> rm.Config:
-    return rm.Config(api_key="test-key-123", model="test-model", max_retries=3, deadline_s=100)
+    return rm.Config(api_key="test-key-123", model="test-model", request_timeout_s=30, max_retries=3, deadline_s=100)
 
 
 @pytest.fixture(autouse=True)

@@ -26,3 +26,4 @@ output*.json
 .vscode/
 .kilo/
 *.zip
+'.env.example' 
