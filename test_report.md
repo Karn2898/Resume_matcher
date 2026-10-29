@@ -43,10 +43,16 @@ nothing about real model quality, real Gemini error payloads, or real injection 
 | Run | Result |
 |---|---|
 | End-to-end CLI on sample files (author's machine, Windows PowerShell, `.venv`) | **FAILED (external)**: Gemini returned HTTP 504; matcher retried 2 of 4 times, then stopped because the next backoff would exceed the 120s overall deadline. Exit code 4, stdout empty, stderr JSON `server_error`, as designed. No result was produced; none is claimed. Model id for this run: not recorded. |
+| End-to-end CLI on sample files (successful rerun, Windows PowerShell, `.venv`) | **PASSED**: valid JSON result produced (see below). |
 | Earlier smoke test (per README history) | Valid key accepted; free-tier quota exhausted before a result was captured. No result recorded. |
 
-Observed and verified: failure contract and retry behaviour work against real server errors.
-Not observed: any successful live evaluation.
+Observed and verified: failure contract and retry behaviour work against real server errors, and a successful live evaluation now completes end-to-end.
+
+### Successful live result (EXECUTED)
+```json
+{"match_score": 85, "top_strengths": ["AI workflow orchestration using LangGraph and FastAPI", "RAG pipeline development with pgvector and vector databases", "Multi-model LLM integration (Google Gemini, OpenAI APIs)", "Full-stack AI application and REST API integration"], "missing_skills": ["Explicit prompt engineering schemas and output formatting", "Systematic AImodel evaluation for hallucination rates and token efficiency"], "summary": "Strong alignment across AI workflow building, RAG pipelines, LLM integration, and web application deployment.\nDedicated benchmarking for hallucination rates and structured output schemas are not fully demonstrated in the resume."}
+```
+Schema check on the live output: all required fields present with correct types; score within [0, 100]; summary is two lines — passes the validation contract.
 
 ## Live integration tests - `tests/test_live_integration.py` - NOT RUN
 | Test | Status |
@@ -55,7 +61,7 @@ Not observed: any successful live evaluation.
 | Resume injection x3 does not inflate score (<= 30) | NOT RUN |
 | JD injection does not force perfect score | NOT RUN |
 | `--list-models` shows the configured model | NOT RUN |
-| End-to-end CLI success on sample files | NOT RUN (last attempt: HTTP 504) |
+| End-to-end CLI success on sample files | **PASSED** (manual live run; result above) — automated pytest row still not run |
 
 To complete: set `GEMINI_DEADLINE_S=300`, retry (try a lighter model if 504 persists), then record
 date, model id, and pass/fail per row. Re-run failures a few times; LLM output is probabilistic.
