@@ -1,9 +1,4 @@
-"""Typed errors and the CLI failure contract.
 
-Failure contract: non-zero exit code, nothing on stdout, and one JSON object
-on stderr: ``{"error": {"type": ..., "message": ..., "retryable": ...}}``.
-Messages never contain API keys or resume / job-description text.
-"""
 
 from __future__ import annotations
 
