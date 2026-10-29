@@ -1,8 +1,4 @@
-"""Output schema and deterministic validation for resume-match results.
 
-The LLM is probabilistic; this module is not. Anything the model returns must
-pass ``MatchResult`` before it is ever shown to a caller.
-"""
 
 from __future__ import annotations
 
